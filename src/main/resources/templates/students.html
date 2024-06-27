@@ -16,7 +16,6 @@
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/students}">Home</a>
             </li>
-
         </ul>
     </div>
 </nav>
@@ -42,6 +41,10 @@
                 <td th:text = "${student.getFirstName()}">
                 <td th:text = "${student.getLastName()}">
                 <td th:text = "${student.getEmail()}">
+                <td>
+                    <a th:href= "@{/students/edit/{id}(id=${student.id})}"
+                       class="btn btn-primary">Update</a>
+                </td>
             </tr>
             </tbody>
         </table>

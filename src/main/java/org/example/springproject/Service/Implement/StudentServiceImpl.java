@@ -1,25 +1,46 @@
 package org.example.springproject.Service.Implement;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import org.example.springproject.Entities.Student;
 import org.example.springproject.Repository.StudentRepository;
 import org.example.springproject.Service.StudentService;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
-public class StudentServiceImpl implements StudentService {
-    private final StudentRepository _studentRepository;
-    public StudentServiceImpl(StudentRepository _studentRepository) {
+public class StudentServiceImpl implements StudentService{
+
+    private StudentRepository studentRepository;
+
+    public StudentServiceImpl(StudentRepository studentRepository) {
         super();
-        this._studentRepository = _studentRepository;
+        this.studentRepository = studentRepository;
     }
+
     @Override
-    public List<Student> GetAllStudents() {
-        return _studentRepository.findAll();
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
 
     @Override
     public Student saveStudent(Student student) {
-        return _studentRepository.save(student);
+        return studentRepository.save(student);
     }
+
+    @Override
+    public Student getStudentById(Long id) {
+        return studentRepository.findById(id).get();
+    }
+
+    @Override
+    public Student updateStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    @Override
+    public void deleteStudentById(Long id) {
+        studentRepository.deleteById(id);
+    }
+
 }
